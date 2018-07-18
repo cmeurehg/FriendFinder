@@ -1,14 +1,16 @@
 var path = require("path");
 
-module.exports = function(app) {
+module.exports = function(routeapp) {
    
   
-    app.get("/survey", function(req, res) {
+    routeapp.get("/survey", function(req, res) {
       res.sendFile(path.join(__dirname, "../public/survey.html"));
     });
   
     
-    app.get("*", function(req, res) {
+    routeapp.get("*", function(req, res) {
       res.sendFile(path.join(__dirname, "../public/home.html"));
     });
   };
+
+  //Look into express routers!  To export routers instead of functions.

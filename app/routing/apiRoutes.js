@@ -1,24 +1,22 @@
-var friendsArray = require("../data/friends");
+var friendsArray = require("../data/friends.json");
 
 
-module.exports = function(app) {
+module.exports = function(expressapp) {
   
-    app.get("/api/friends", function(req, res) {
+    expressapp.get("/api/friends", function(req, res) {
       res.json(friendsArray);
-    
+      
+    });
 
-    app.post("/api/friends", function(req, res) {
+    expressapp.post("/api/friends", function(req, res) {
         
-        if (friendsArray.length < 2) {
+      
           friendsArray.push(req.body);
           res.json(true);
-        }
-        
-        else {
-          friendsArray.push(req.body);
-          res.json(false);
-        }
+       
 
-      });
-    })
+        console.log(friendsArray);
+    });
+      
+
 };
